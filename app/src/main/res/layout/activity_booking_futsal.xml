@@ -7,38 +7,97 @@
     android:orientation="vertical"
     tools:context=".BookingFutsalActivity">
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Masukkan Nama Anda ..."
-        android:inputType="text" />
+        android:orientation="vertical">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:hint="Masukkan Nomor Telepon Anda ..."
-        android:inputType="phone" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama"
+            android:textSize="16sp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:hint="Masukkan Tanggal dan Waktu Booking ..."
-        android:inputType="datetime" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="45dp"
-        android:text="Lama Waktu Booking (Jam)"
-        android:textStyle="bold" />
+        <EditText
+            android:id="@+id/edt_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan Nama Anda ..."
+            android:inputType="text" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nomor Telepon"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edt_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan Nomor Telepon Anda ..."
+            android:inputType="phone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tanggal Booking (Format : DD/MM/YYYY)" />
+
+        <EditText
+            android:id="@+id/edt_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan Tanggal Booking ..."
+            android:inputType="date" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Waktu Booking (Contoh : 09.00 atau 21.00)" />
+
+        <EditText
+            android:id="@+id/edt_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan Waktu Booking ..."
+            android:inputType="date" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="Lama Waktu Booking (Jam)"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -46,7 +105,7 @@
             android:layout_width="48dp"
             android:layout_height="wrap_content"
             android:onClick="increment"
-            android:text="+" />
+            android:text="-" />
 
         <TextView
             android:id="@+id/txt_quantity"
@@ -63,22 +122,25 @@
             android:layout_width="48dp"
             android:layout_height="wrap_content"
             android:onClick="decrement"
-            android:text="-" />
+            android:text="+" />
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="#212121" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="#212121" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -86,7 +148,8 @@
             android:layout_marginBottom="16dp"
             android:text="Total Harga"
             android:textAllCaps="true"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"/>
 
         <TextView
             android:id="@+id/txt_price"
@@ -106,10 +169,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:background="#009688"
+            android:background="@color/colorPrimaryDark"
             android:text="BOOKING SEKARANG"
             android:textColor="@color/white"
             android:textStyle="normal" />
     </LinearLayout>
-
+    </ScrollView>
 </LinearLayout>
