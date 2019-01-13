@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,28 +20,29 @@ public class BookingFutsalActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking_futsal);
-        submitOrder();
     }
 
-    public void increment(View view) { //perintah tombol tambah
+    public void increment(View view) {
         if (quantity == 5) {
-            Toast.makeText(this, "Maksimal Booking 5 Jam", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Booking maksimal 5 jam", Toast.LENGTH_SHORT).show();
             return;
         }
+
         quantity = quantity + 1;
         display(quantity);
     }
 
     public void decrement(View view) {
         if (quantity == 0) {
-            Toast.makeText(this, "Booking minimal 1 Jam", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Booking minimal 1 jam", Toast.LENGTH_SHORT).show();
             return;
         }
+
         quantity = quantity - 1;
         display(quantity);
     }
 
-    public void submitOrder() {
+    public void submitOrder(View view) {
         EditText edtName = (EditText) findViewById(R.id.edt_name);
         String name = edtName.getText().toString();
         Log.v("BookingFutsalActivity", "Nama : " + name);
@@ -51,52 +53,64 @@ public class BookingFutsalActivity extends AppCompatActivity {
 
         EditText edtDate = (EditText) findViewById(R.id.edt_date);
         String date = edtDate.getText().toString();
-        Log.v("BookingFutsalActivity", "Tanggal : " + date);
+        Log.v("BookingFutsalActivity", "Tanggal Booking : " + date);
 
         EditText edtTime = (EditText) findViewById(R.id.edt_time);
         String time = edtTime.getText().toString();
-        Log.v("BookingFutsalActivity", "Nomor Telepon: " + time);
+        Log.v("BookingFutsalActivity", "Jam Booking : " + time);
 
-        int price = calculatePrice();
-        String priceMessage = createOrderSummary(price, name, phone, date, time);
+        CheckBox rompiCheckBox = (CheckBox) findViewById(R.id.rompi_checkbox);
+        boolean rentRompi = rompiCheckBox.isChecked();
+        Log.v("BookingFutsalActivity", "Sewa Rompi : " + rentRompi);
 
+        CheckBox sepatuCheckBox = (CheckBox) findViewById(R.id.sepatu_checkbox);
+        boolean rentSepatu = sepatuCheckBox.isChecked();
+        Log.v("BookingFutsalActivity", "Sewa sepatu : " + rentSepatu);
+
+        int price = calculatePrice(rentRompi, rentSepatu);
+        String priceMessage = createOrderSummary(price, name, phone, date, time, rentRompi, rentSepatu);
         displayMessage(priceMessage);
-        displayPrice(price);
     }
 
-    private int calculatePrice() {
+    private int calculatePrice(boolean addRompi, boolean addSepatu) {
         int harga = 100000;
 
-        if (harga >= 0) {
-            harga = harga * 100000;
+        if (addRompi) {
+            harga = harga + 50000;
         }
+
+        if (addSepatu) {
+            harga = harga + 100000;
+        }
+
         return quantity * harga;
     }
 
-    private String createOrderSummary(int price, String name, String phone, String date, String time) {
-        String pricemessage=" Nama = "+name;
-        pricemessage+="\n Nomor Telepon =" +phone;
-        pricemessage+="\n Tanggal Booking =" +date;
-        pricemessage+="\n Waktu Booking =" +time;
-        pricemessage+="\n Jumlah Pemesanan =" +quantity;
-        pricemessage+="\n Total = Rp " +price;
-        pricemessage+="\n Terimakasih";
-        return  pricemessage;
+    private String createOrderSummary(int price, String name, String phone, String date, String time, boolean addRompi, boolean addSepatu) {
+        String priceMessage = "Nama : " + name;
+        priceMessage+="\nNomor Telepon : " + phone;
+        priceMessage+="\nTanggal Booking : " + date;
+        priceMessage+="\nWaktu Booking : " + time;
+        priceMessage+="\n Sewa Rompi : "+addRompi;
+        priceMessage+="\n Sewa Sepatu : "+addSepatu;
+        priceMessage+="\n Durasi Booking : " + quantity;
+        priceMessage+="\n Total Pembayaran : Rp." + price;
+        priceMessage+="\n Terima Kasih";
+        return  priceMessage;
     }
 
-    //cetak hasil
     private void displayMessage(String message) {
-        TextView txtPrice = (TextView) findViewById(R.id.txt_price);
+        TextView txtPrice = (TextView) findViewById(R.id.price_textview);
         txtPrice.setText(message);
     }
 
     private void display(int number) {
-        TextView quantityTextView = (TextView) findViewById(R.id.txt_quantity);
-        quantityTextView.setText("" + number);
+        TextView txtQuantity = (TextView) findViewById(R.id.quantity_textview);
+        txtQuantity.setText("" + number);
     }
 
     private void displayPrice(int number) {
-        TextView txtPrice = (TextView) findViewById(R.id.txt_price);
+        TextView txtPrice = (TextView) findViewById(R.id.price_textview);
         txtPrice.setText(NumberFormat.getCurrencyInstance().format(number));
     }
 }
