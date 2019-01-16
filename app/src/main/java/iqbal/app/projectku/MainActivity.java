@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton imgBtnFutsal = (ImageButton) findViewById(R.id.img_btn_futsal);
         ImageButton imgBtnBadminton = (ImageButton) findViewById(R.id.img_btn_bultang);
-        ImageButton imgBtnAboutApps = (ImageButton) findViewById(R.id.img_btn_about_apps);
-        ImageButton imgBtnAboutUs = (ImageButton) findViewById(R.id.img_btn_about_us);
+        ImageButton imgBtnAbout = (ImageButton) findViewById(R.id.img_btn_about_apps);
+        ImageButton imgBtnProfile = (ImageButton) findViewById(R.id.img_btn_profile);
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         adapter = new CustomSwipeAdapter(this);
@@ -44,5 +44,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        imgBtnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent profile = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(profile);
+            }
+        });
+
+        imgBtnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent about = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(about);
+            }
+        });
     }
 }

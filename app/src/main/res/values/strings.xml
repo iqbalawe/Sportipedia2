@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">ProjectKu</string>
+    <string name="app_name">Sportipedia</string>
+    <string name="description">Sportipedia adalah aplikasi booking lapangan yang dibuat untuk memudahkan masyarakat untuk booking lapangan.
+    Disini kita berfokus pada 2 sistem pembookingan, yaitu booking lapangan futsal dan booking lapangan badminton.</string>
 </resources>

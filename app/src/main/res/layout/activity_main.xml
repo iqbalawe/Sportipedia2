@@ -107,7 +107,7 @@
                         android:orientation="vertical">
 
                         <ImageButton
-                            android:id="@+id/img_btn_about_us"
+                            android:id="@+id/img_btn_profile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
@@ -120,7 +120,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="My Profile"
+                            android:text="Profile Saya"
                             android:textAlignment="center"
                             android:textColor="@color/colorYellow"
                             android:textStyle="normal|bold" />
