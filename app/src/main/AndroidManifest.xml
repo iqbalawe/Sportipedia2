@@ -22,8 +22,14 @@
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".FutsalActivity"
             android:parentActivityName=".MainActivity"/>
-        <activity android:name=".BookingFutsalActivity"
+        <activity android:name=".ArenaActivity"
             android:parentActivityName=".FutsalActivity"/>
+        <activity android:name=".GscFutsalActivity"
+            android:parentActivityName=".FutsalActivity"/>
+        <activity android:name=".GscBadmintonActivity"
+            android:parentActivityName=".BadmintonActivity"/>
+        <activity android:name=".CihuniActivity"
+            android:parentActivityName=".BadmintonActivity"/>
     </application>
 
 </manifest>

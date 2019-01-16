@@ -72,6 +72,7 @@
             android:layout_marginTop="22dp">
 
             <Button
+                android:id="@+id/btn_cihuni"
                 android:background="@color/colorGreen"
                 android:text="BOOKING"
                 android:layout_width="120dp"

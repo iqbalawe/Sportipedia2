@@ -87,7 +87,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Lapangan Bulutangkis"
+                            android:text="Lapangan Badminton"
                             android:textAlignment="center"
                             android:textColor="@color/colorYellow"
                             android:textStyle="normal|bold" />
@@ -120,7 +120,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Tentang Kami"
+                            android:text="My Profile"
                             android:textAlignment="center"
                             android:textColor="@color/colorYellow"
                             android:textStyle="normal|bold" />

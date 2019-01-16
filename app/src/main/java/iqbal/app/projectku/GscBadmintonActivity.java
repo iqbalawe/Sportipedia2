@@ -12,14 +12,14 @@ import android.widget.Toast;
 
 import java.text.NumberFormat;
 
-public class BookingFutsalActivity extends AppCompatActivity {
+public class GscBadmintonActivity extends AppCompatActivity {
 
     int quantity = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_booking_futsal);
+        setContentView(R.layout.activity_booking_badminton);
     }
 
     public void increment(View view) {
@@ -45,57 +45,57 @@ public class BookingFutsalActivity extends AppCompatActivity {
     public void submitOrder(View view) {
         EditText edtName = (EditText) findViewById(R.id.edt_name);
         String name = edtName.getText().toString();
-        Log.v("BookingFutsalActivity", "Nama : " + name);
+        Log.v("ArenaActivity", "Nama : " + name);
 
         EditText edtPhone = (EditText) findViewById(R.id.edt_phone);
         String phone = edtPhone.getText().toString();
-        Log.v("BookingFutsalActivity", "Nomor Telepon : " + phone);
+        Log.v("ArenaActivity", "Nomor Telepon : " + phone);
 
         EditText edtDate = (EditText) findViewById(R.id.edt_date);
         String date = edtDate.getText().toString();
-        Log.v("BookingFutsalActivity", "Tanggal Booking : " + date);
+        Log.v("ArenaActivity", "Tanggal Booking : " + date);
 
         EditText edtTime = (EditText) findViewById(R.id.edt_time);
         String time = edtTime.getText().toString();
-        Log.v("BookingFutsalActivity", "Jam Booking : " + time);
+        Log.v("ArenaActivity", "Jam Booking : " + time);
 
-        CheckBox rompiCheckBox = (CheckBox) findViewById(R.id.rompi_checkbox);
-        boolean rentRompi = rompiCheckBox.isChecked();
-        Log.v("BookingFutsalActivity", "Sewa Rompi : " + rentRompi);
+        CheckBox raketCheckBox = (CheckBox) findViewById(R.id.raket_checkbox);
+        boolean rentRaket = raketCheckBox.isChecked();
+        Log.v("ArenaActivity", "Sewa Raket : " + rentRaket);
 
         CheckBox sepatuCheckBox = (CheckBox) findViewById(R.id.sepatu_checkbox);
         boolean rentSepatu = sepatuCheckBox.isChecked();
-        Log.v("BookingFutsalActivity", "Sewa sepatu : " + rentSepatu);
+        Log.v("ArenaActivity", "Sewa Sepatu : " + rentSepatu);
 
-        int price = calculatePrice(rentRompi, rentSepatu);
-        String priceMessage = createOrderSummary(price, name, phone, date, time, rentRompi, rentSepatu);
+        int price = calculatePrice(rentRaket, rentSepatu);
+        String priceMessage = createOrderSummary(price, name, phone, date, time, rentRaket, rentSepatu);
         displayMessage(priceMessage);
     }
 
-    private int calculatePrice(boolean addRompi, boolean addSepatu) {
-        int harga = 100000;
+    private int calculatePrice(boolean addRaket, boolean addSepatu) {
+        int harga = 35000;
 
-        if (addRompi) {
-            harga = harga + 50000;
+        if (addRaket) {
+            harga = harga + 25000;
         }
 
         if (addSepatu) {
-            harga = harga + 100000;
+            harga = harga + 35000;
         }
 
         return quantity * harga;
     }
 
-    private String createOrderSummary(int price, String name, String phone, String date, String time, boolean addRompi, boolean addSepatu) {
+    private String createOrderSummary(int price, String name, String phone, String date, String time, boolean addRaket, boolean addSepatu) {
         String priceMessage = "Nama : " + name;
         priceMessage+="\nNomor Telepon : " + phone;
         priceMessage+="\nTanggal Booking : " + date;
         priceMessage+="\nWaktu Booking : " + time;
-        priceMessage+="\n Sewa Rompi : "+addRompi;
-        priceMessage+="\n Sewa Sepatu : "+addSepatu;
-        priceMessage+="\n Durasi Booking : " + quantity;
-        priceMessage+="\n Total Pembayaran : Rp." + price;
-        priceMessage+="\n Terima Kasih";
+        priceMessage+="\nSewa Rompi : " + addRaket;
+        priceMessage+="\nSewa Sepatu : " + addSepatu;
+        priceMessage+="\nDurasi Booking : " + quantity;
+        priceMessage+="\nTotal Pembayaran : Rp." + price;
+        priceMessage+="\nTerima Kasih";
         return  priceMessage;
     }
 

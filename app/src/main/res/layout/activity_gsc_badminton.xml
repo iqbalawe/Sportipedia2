@@ -50,7 +50,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rp.50.000"
+                    android:text="Rp.35.000"
                     android:textColor="@color/white"/>
 
                 <TextView
@@ -72,6 +72,7 @@
             android:layout_marginTop="22dp">
 
             <Button
+                android:id="@+id/btn_gsc_badminton"
                 android:background="@color/colorGreen"
                 android:text="BOOKING"
                 android:layout_width="120dp"
